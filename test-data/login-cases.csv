@@ -1,0 +1,5 @@
+name,email,password,expectedResult
+John Doe,admin@practicesoftwaretesting.com,welcome012,Failure
+Jane Doe,customer@practicesoftwaretesting.com,welcome01,Success
+Jack Howe,customer2@practicesoftwaretesting.com,welcome01,Success
+Bob Smith,customer3@practicesoftwaretesting.com,pass123,Success

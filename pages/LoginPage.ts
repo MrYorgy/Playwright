@@ -1,26 +1,19 @@
-import { Page, Locator } from '@playwright/test';
+import { Page } from '@playwright/test';
 
 export class LoginPage {
-  readonly page: Page;
-  readonly emailInput: Locator;
-  readonly passwordInput: Locator;
-  readonly loginButton: Locator;
-
-  constructor(page: Page) {
-    this.page = page;
-
-    this.emailInput = page.getByLabel('Email address');
-    this.passwordInput = page.getByLabel('Password');
-    this.loginButton = page.getByRole('button', { name: /login/i });
-  }
+  constructor(private readonly page: Page) {}
 
   async goto() {
-    await this.page.goto('https://practicesoftwaretesting.com/auth/login');
+    await this.page.goto(
+      'https://practicesoftwaretesting.com/auth/login'
+    );
   }
 
   async login(email: string, password: string) {
-    await this.emailInput.fill(email);
-    await this.passwordInput.fill(password);
-    await this.loginButton.click();
+    await this.page.locator('[data-test="email"]').fill(email);
+
+    await this.page.locator('[data-test="password"]').fill(password);
+
+    await this.page.locator('[data-test="login-submit"]').click();
   }
 }
